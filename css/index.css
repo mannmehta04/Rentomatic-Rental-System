@@ -1,0 +1,136 @@
+body{
+    background-color: rgb(20,20,20);
+    margin: 0px;
+}
+
+button.menu-item{
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+#menu{
+    height:100vh;
+    display: flex;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url("../fonts/Rubik-Regular.ttf");
+}
+
+/* Whole Menu Set Styling */
+#menu-items{
+    margin-left: clamp(4rem, 14vw, 48rem);
+    position: relative;
+    z-index: 1;
+}
+
+/* reduce opacity on simple hover for all items */
+#menu-items:hover > .menu-item{
+    opacity: 0.3;
+}
+
+/* give default opacity to the menu item that hovered on */
+#menu-items:hover > .menu-item:hover{
+    opacity: 1;
+}
+
+
+/* Particular Link Styling */
+.menu-item{
+    color:white;
+    cursor: pointer;
+    /* font-size: clamp(3rem, 8vw, 8rem); */
+    font-size: 50px;
+    font-family: 'Rubik-Regular', sans-serif;
+
+    display: block;
+    text-decoration: none;
+    padding: clamp(0.25rem, 0.5vw, 1rem);
+    transition: opacity 500ms ease;
+}
+
+#menu-background-image{
+    height: 100%;
+    width: 100%;
+
+    background-image:url("../images/home3.jpg");
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+
+    background-position: center 40%;
+    background-size: 80vmax;
+    opacity: 0.4;
+
+    transition: opacity 800ms ease,
+        background-size 800ms ease,
+        background-position 800ms ease;
+}
+
+#menu[data-active-index="0"] > #menu-background-image {
+    background-position: 0% -25%;
+}
+#menu[data-active-index="1"] > #menu-background-image {
+    background-position: 0% -50%;
+}
+#menu[data-active-index="2"] > #menu-background-image {
+    background-position: 0% -75%;
+}
+#menu[data-active-index="3"] > #menu-background-image {
+    background-position: 0% -100%;
+}
+
+#menu-items:hover ~ #menu-background-image {
+    background-size: 80vmax;
+    opacity: 0.2;
+}
+
+.logo{
+    height: 100%;
+    width: 100%;
+
+    background-image: url("../images/blue_tranaparent.png");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:40%;
+    z-index:4;
+    overflow: hidden;
+
+    transition: opacity 500ms ease;
+    /* visibility: hidden; */
+}
+
+.menu-item:hover{
+    background-image: -webkit-gradient( linear, left top, right bottom, color-stop(0, #dc0606), color-stop(1, rgb(93, 2, 239)));
+    background-image: gradient( linear, left top, right bottom, color-stop(0, #dc0606), color-stop(1, rgb(93, 2, 239)) );
+
+    /* set text transparent so that it hides*/
+    color:transparent;
+
+    /* show gradients text,  hiding box*/
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+#menu-background-image{
+    background-image: url("../images/home3.jpg");
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+
+    background-position: center 40%;
+    background-size: 75vmax;
+    opacity: 0.4;
+
+    transition: opacity 800ms ease,
+        background-size 800ms ease,
+        background-position 800ms ease;
+}
