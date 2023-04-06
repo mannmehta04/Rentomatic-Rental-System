@@ -8,7 +8,8 @@ body{
     background-color:rgb(36, 35, 35);
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
-    background-position: center center; 
+    background-position: center center;
+    overflow: hidden;
 
     /* width: 100%;
     height: 100%;
@@ -91,25 +92,154 @@ a:hover{
     background-clip: text;
 }
 
-.emptyBlock{
+.emptyBlock1{
 
-    height: 50%;
+    height: 40%;
     width: 30%;
 
     border-radius: 20px;
 
-    margin-top: 4%;
+    margin-top: 11%;
     margin-left: 8%;
+    position: absolute;
 
     padding: 40px;
 
-    background: white;
+    background: linear-gradient(135deg, #ff8c00, #ffff00, #ff8c00);
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.2);
+    
+    /* background: rgb(113,209,0);
+    background: linear-gradient(270deg, rgba(113,209,0,1) 0%, rgba(231,236,0,1) 60%, rgba(255,175,0,1) 100%);  */
+
+    /* background: white; */
+    /* background: rgb(127,205,59);
+    background: linear-gradient(63deg, rgba(127,205,59,1) 18%, rgba(166,210,21,1) 52%, rgba(0,239,255,1) 100%); */
+    /* opacity: 0.4; */
+    transition: ease-in-out 500ms;
+}
+
+.emptyBlock2{
+
+    height: 40%;
+    width: 30%;
+
+    border-radius: 20px;
+
+    margin-top: 11%;
+    margin-left: 55%;
+
+    padding: 40px;
+    position: absolute;
+    float: right;
+
+    /* background: white; */
+    
+    background: linear-gradient(135deg, #ff8c00, #ffff00, #ff8c00);
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.2);
+
+    /* background: rgb(113,209,0);
+    background: linear-gradient(90deg, rgba(113,209,0,1) 0%, rgba(231,236,0,1) 60%, rgba(255,175,0,1) 100%);  */
+    /* opacity: 0.4; */
+    transition: ease-in-out 500ms;
+}
+
+.emptyBlock1:hover{
+    /* height: 52%;
+    width: 32%; */
+    padding: 45px;
+
+    transition: ease-in-out 500ms;
+}
+
+.emptyBlock2:hover{
+    /* height: 52%;
+    width: 32%; */
+    padding: 45px;
+
+    transition: ease-in-out 500ms;
 }
 
 .dataBlock{
-    font-size: 48px;
-    width: 200px;
+    font-size: 36px;
+    width: 300px;
+    background: linear-gradient(320deg, #ff8c00, #1a1a1a, #173b6c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* opacity: 0.6; */
 }
+
+.titleText{
+    font-family: 'Rubik-Regular', sans-serif;
+    font-size: xx-large;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 8%;
+
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.infoText{
+    font-family: 'Rubik-Regular', sans-serif;
+    font-size: xx-large;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 18%;
+
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.btn1{
+    margin-top: 80px !important;
+}
+
+.btn1,.btn2{
+    display: block;
+    margin-left: auto;
+    /* margin: 30px 30px 0px 40px; */
+    padding: 10px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid orange;
+    background: linear-gradient(135deg, #ff8c00, #1a1a1a, #173b6c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-sizing: border-box;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 30px;
+    margin-top: 40px;
+    box-shadow: 10px;
+
+    transition: 0.2s;
+}
+.btn1:hover, .btn2:hover{
+    /* padding:  10px; */
+    border: 2px solid orange;
+}
+
+/* .btn2{
+    display: block;
+    margin-left: auto;
+    padding: 30px 30px;
+    background-color: transparent;
+    /* border: none; */
+    /* border-bottom: 2px solid black;     */
+    /* background: linear-gradient(135deg, #ff8c00, #1a1a1a, #173b6c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+
+    /* border-radius: 6px;
+    cursor: pointer;
+    font-size: 30px;
+    margin-top: 2px;
+    box-shadow: 10px; */
+
+    /* transition: 0.2s; */
+/* } */
 
 .signup{
     /* overflow: hidden; */
