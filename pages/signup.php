@@ -21,7 +21,7 @@
     <table>
       <tr>
         <td><div class="inputContainer">
-          <input type="text" name="email" class="input" placeholder="" required>
+          <input type="email" name="email" class="input" placeholder="" required>
           <label for="" class="label">Email</label>
         </div></td>
         <td>
@@ -36,13 +36,13 @@
 
       <tr>
         <td><div class="inputContainer">
-          <input type="password" name="pass" class="input" placeholder="">
+          <input type="password" name="pass" class="input" placeholder="" required>
           <label for="" class="label">Password</label>
         </div>
         </td>
         <td>
           <div class="inputContainer">
-            <input type="text" name="addr" class="input" placeholder="">
+            <input type="text" name="addr" class="input" placeholder="" required>
             <label for="" class="label">Address</label>
           </div>
         </td>
@@ -50,13 +50,13 @@
 
       <tr>
         <td><div class="inputContainer">
-          <input type="text" name="fname" class="input" placeholder="">
+          <input type="text" name="fname" class="input" placeholder="" required>
           <label for="" class="label">First Name</label>
         </div>
         </td>
         <td>
           <div class="inputContainer" style="margin-bottom: 20px;">
-            <input type="text" name="city" class="input" placeholder="">
+            <input type="text" name="city" class="input" placeholder="" required>
             <label for="" class="label">City</label>
           </div>
         </td>
@@ -64,13 +64,13 @@
 
       <tr>
         <td><div class="inputContainer">
-          <input type="text" name="lname" class="input" placeholder="">
+          <input type="text" name="lname" class="input" placeholder="" required>
           <label for="" class="label">Last Name</label>
         </div>
         </td>
         <td>
           <div class="inputContainer">
-            <input type="text" name="state" class="input" placeholder="">
+            <input type="text" name="state" class="input" placeholder="" required>
             <label for="" class="label">State</label>
           </div>
         </td>
@@ -79,8 +79,8 @@
       <tr>
         <td>
           <div class="inputContainer">
-          <select class="input" name="gender" style="width: 113%; color: grey;">
-            <option>--Select Gender--</option>
+          <select class="input" name="gender" style="width: 113%; color: grey;" required>
+            <option disabled>--Select Gender--</option>
             <option>Male</option>
             <option>Female</option>
           </select>
@@ -88,14 +88,14 @@
         </td>
         <td>
           <div class="inputContainer">
-            <input type="number" name="pincode" class="input" placeholder="">
+            <input type="number" name="pincode" pattern="[0-9]{6}" class="input" placeholder="" required>
             <label for="" class="label">Pincode</label>
           </div>
         </td>
       </tr>
 
     </table>
-
+  
   </div>
 
   <input type="button" onclick="location.href = '../pages/new.php';" class="homeBtn" value="Home">
@@ -103,6 +103,15 @@
   <input type="submit" name="sendData" class="submitBtn">
   </form>
   </div>
+  <!-- <script>
+    function checkData(){
+      const email = document.getElementById("email").value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        location.href = '../pages/signup.php';
+      }
+    }
+  </script> -->
 </body>
 </html>
 
@@ -116,21 +125,47 @@ if(isset($_POST['sendData'])){
   $fname = $_POST["fname"];
   $lname = $_POST["lname"];
   $gender = $_POST["gender"];
+  $bDate = $_POST["bdate"];
   $addr = $_POST["addr"];
   $city = $_POST["city"];
   $state = $_POST["state"];
   $pincode = $_POST["pincode"];
-  
-// echo "<script>alert('j')</script>";
-  $query = "INSERT INTO traveler (traveler_id, email, pass, first_name, last_name, gender, address, city, state, pincode) VALUES ('$email', '$pass', '$fname', '$lname', '$gender', '$addr', '$city', '$state', $pincode)";
-  // $query = "INSERT INTO traveler (email, pass, first_name, last_name, gender, address, city, state, pincode) VALUES (`$email`, `$pass`, `$fname`, `$lname`, `$gender`, `$addr`, `$city`, `$state`, $pincode)";
-  echo $query;
-  
-  if(mysqli_query($con, $query)){
-    header('Location: ./new.html');
-    // echo "Data inserted successfully";
-  } else {
-    echo "Error!";
+
+  $userExist = 0;
+  $sql = "SELECT email FROM traveler";
+  $result = mysqli_query($con, $sql);
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $fetchedEmail = $row['email'];
+    if ($email == $fetchedEmail) {
+      $userExist = 1;
+      break;
+    }
   }
+
+  if($userExist == 0){
+    
+    $query = "INSERT INTO traveler (place_id, email, pass, first_name, last_name, gender, bdate, address, city, state, pincode) VALUES (0, '$email', '$pass', '$fname', '$lname', '$gender', '$bDate', '$addr', '$city', '$state', $pincode)";
+     echo $query;
+  
+    if(mysqli_query($con, $query)){
+      header('Location: ./signin.php');
+      // echo "Data inserted successfully";
+    }
+    else {
+      echo "<script>alert('Error while Inserting Data');</script>";
+    }
+  }
+  else{
+    echo "<script>alert('This Email Id Exists, Please Login with another Email Id.');</script>";
+  }
+  
+  // $findMail="select traveler_id from traveler where email = '$email'";
+  // $run = mysqli_query($con, $findMail);
+
+  // if(mysqli_query($con, $findMail)){
+  //   echo "<script>alert('This Email Id Exists, Please Login with another Email Id.');</script>";
+  // }
+  
 }
 ?>
